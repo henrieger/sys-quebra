@@ -44,6 +44,6 @@ public class PrimaryController {
 		} else {
 			alert("Não foi possível carregar o arquivo!", true);	
 		}
-        App.setRoot("secondary");
+        App.setRoot("disciplinas");
     }
 }

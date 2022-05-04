@@ -3,7 +3,11 @@ package com.paradigmas;
 import java.io.File;
 
 import java.io.IOException;
+import java.util.List;
+
 import com.paradigmas.Controllers.HistoricoController;
+import com.paradigmas.DAOs.DisciplinaDAO;
+import com.paradigmas.Models.Disciplina;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -25,6 +29,7 @@ public class PrimaryController {
     @FXML
     private void switchToSecondary() throws IOException {
     	
+		
     	FileChooser fc = new FileChooser();
 		File file = fc.showOpenDialog(null);
 		
@@ -39,6 +44,6 @@ public class PrimaryController {
 		} else {
 			alert("Não foi possível carregar o arquivo!", true);	
 		}
-        App.setRoot("secondary");
+        App.setRoot("disciplinas");
     }
 }

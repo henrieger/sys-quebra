@@ -16,6 +16,8 @@ public class Matricula {
     private Situacao situacao;
     private int frequencia;
     private int periodo;
+    
+    
 
     public Matricula(String grr, String cod_disciplina, Double media_final, int ano, Situacao situacao, int frequencia, int periodo)
     {
@@ -27,4 +29,10 @@ public class Matricula {
         this.frequencia = frequencia;
         this.periodo = periodo;
     }
+
+
+
+	public String getCod_disciplina() {
+		return this.cod_disciplina;
+	}
 }

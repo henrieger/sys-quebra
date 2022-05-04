@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="NEVER">
+        <tabs>
+          <Tab text="Disciplinas">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="984.0">
+                     <children>
+                        <GridPane alignment="CENTER" hgap="30.0" layoutY="-1.0" maxHeight="400.0" maxWidth="600.0" minHeight="370.0" minWidth="600.0" prefHeight="370.0" prefWidth="600.0" vgap="15.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" />
+                            <ColumnConstraints hgrow="SOMETIMES" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Disciplinas para terminar a barreira" textAlignment="CENTER" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="309.0" text="Disciplinas Escolhidas" textAlignment="CENTER" GridPane.columnIndex="1" />
+                              <ListView prefHeight="105.0" prefWidth="275.0" GridPane.rowIndex="1" />
+                              <ListView prefHeight="96.0" prefWidth="195.0" GridPane.rowIndex="3" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Outras Disciplinas" textAlignment="CENTER" GridPane.rowIndex="2" />
+                              <ListView prefHeight="290.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="3" />
+                              <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Prosseguir" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Pedidos">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane alignment="CENTER" hgap="30.0" maxHeight="400.0" maxWidth="600.0" minHeight="370.0" minWidth="600.0" prefHeight="367.0" prefWidth="984.0" vgap="15.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
+                           <children>
+                              <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Gerar Pedido" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                              <Button contentDisplay="CENTER" layoutX="196.0" layoutY="250.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Salvar Pedido" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                <columns>
+                                  <TableColumn maxWidth="1.7976931348623157E308" prefWidth="271.0" text="Cod. Disciplina" />
+                                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="672.0" text="Nome Disciplina" />
+                                </columns>
+                              </TableView>
+                              <Label maxWidth="1.7976931348623157E308" text="Pedidos Pendentes" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="Historico">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Perfil">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</VBox>

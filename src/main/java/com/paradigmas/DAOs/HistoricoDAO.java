@@ -58,10 +58,9 @@ public class HistoricoDAO
 
         String grr = (records.get(0)).get(Header.MATR_ALUNO.value);
         String nome = (records.get(0)).get(Header.NOME_PESSOA.value);
-        Disciplina.Versao versao = ((records.get(0)).get(Header.NUM_VERSAO.value) == "2011") ? Disciplina.Versao.v2011 : Disciplina.Versao.v2019;
         List<Matricula> matricula = this.ler_matriculas(records);
 
-        Aluno aluno = new Aluno(grr, nome, versao, matricula);
+        Aluno aluno = new Aluno(grr, nome, matricula);
         return aluno;
     }
 

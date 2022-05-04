@@ -8,8 +8,11 @@ import java.util.List;
 import java.io.IOException;
 import java.util.Arrays;
 
+
 public class CsvReader 
 {
+	 
+	
     public static List<List<String>> ler_csv(String path, String delimiter) throws IOException {
         if ((new File(path)).exists()) {
             List<List<String>> records = new ArrayList<>();
@@ -28,4 +31,7 @@ public class CsvReader
         }
         return new ArrayList<>();
     }
+    
+    
+
 }

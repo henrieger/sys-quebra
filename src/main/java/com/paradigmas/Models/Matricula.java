@@ -1,5 +1,8 @@
 package com.paradigmas.Models;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Matricula {
 
     public enum Situacao {
@@ -10,11 +13,11 @@ public class Matricula {
     };
 
     private String grr;
-    private String cod_disciplina;
-    private Double media_final;
+    private SimpleStringProperty cod_disciplina;
+    private SimpleDoubleProperty media_final;
     private int ano;
     private Situacao situacao;
-    private int frequencia;
+    private SimpleStringProperty frequencia;
     private int periodo;
     
     
@@ -22,17 +25,40 @@ public class Matricula {
     public Matricula(String grr, String cod_disciplina, Double media_final, int ano, Situacao situacao, int frequencia, int periodo)
     {
         this.grr = grr;
-        this.cod_disciplina = cod_disciplina;
-        this.media_final = media_final;
+        this.cod_disciplina = new SimpleStringProperty(cod_disciplina);
+        this.media_final = new SimpleDoubleProperty(media_final);
         this.ano = ano;
         this.situacao = situacao;
-        this.frequencia = frequencia;
+        this.frequencia = new SimpleStringProperty(frequencia+"%");
         this.periodo = periodo;
     }
 
+    public int getAno() {
+        return this.ano;
+    }
 
+    public int getPeriodo() {
+        return this.periodo;
+    }
 
 	public String getCod_disciplina() {
-		return this.cod_disciplina;
+		return this.cod_disciplina.toString();
 	}
+
+    public SimpleStringProperty cod_disciplinaProperty() {
+        return this.cod_disciplina;
+    }
+
+    public SimpleDoubleProperty media_finalProperty() {
+        return this.media_final;
+    }
+
+    public SimpleStringProperty frequenciaProperty() {
+        return this.frequencia;
+    }
+
+    public int getFrequencia()
+    {
+        return Integer.parseInt(this.frequencia.getValue().split("%")[0]);
+    }
 }

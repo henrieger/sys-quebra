@@ -6,4 +6,6 @@ module com.paradigmas {
 
     opens com.paradigmas to javafx.fxml;
     exports com.paradigmas;
+
+    opens com.paradigmas.Models;
 }

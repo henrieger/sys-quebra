@@ -17,7 +17,8 @@ public class CsvReader
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] values = line.split(delimiter);
-                    records.add(Arrays.asList(values));
+                    if(values.length != 0)
+                    	records.add(Arrays.asList(values));
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());

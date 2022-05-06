@@ -44,5 +44,9 @@ public class Disciplina {
 	public String getNome() {
 		return nome;
 	}
+	
+	public String toString() {
+		return this.getNome();
+	}
 
 }

@@ -19,7 +19,6 @@ public class HistoricoDAO
     private enum Header {
         MATR_ALUNO(0),
         NOME_PESSOA(1),
-        NUM_VERSAO(4),
         ANO(5),
         MEDIA_FINAL(6),
         PERIODO(8),
@@ -52,19 +51,21 @@ public class HistoricoDAO
         return false;
     }
 
-    public Aluno ler_historico() throws IOException
+    public static Aluno ler_historico() throws Exception
     {
         List<List<String>> records = CsvReader.ler_csv(historico_path, delimiter);
-
+        
         String grr = (records.get(0)).get(Header.MATR_ALUNO.value);
+        System.out.println(records.size());
         String nome = (records.get(0)).get(Header.NOME_PESSOA.value);
-        List<Matricula> matricula = this.ler_matriculas(records);
+
+        List<Matricula> matricula = HistoricoDAO.ler_matriculas(records);
 
         Aluno aluno = new Aluno(grr, nome, matricula);
         return aluno;
     }
 
-    private List<Matricula> ler_matriculas(List<List<String>> records)
+    private static List<Matricula> ler_matriculas(List<List<String>> records)
     {
         List<Matricula> matriculas = new ArrayList<>();
         for (List<String> matr : records) {
@@ -72,8 +73,8 @@ public class HistoricoDAO
             String cod_disciplina = matr.get(Header.COD_ATIV_CURRIC.value);
             Double media = Double.parseDouble(matr.get(Header.MEDIA_FINAL.value));
             int ano = Integer.parseInt(matr.get(Header.ANO.value));
-            int frequencia = Integer.parseInt(matr.get(Header.FREQUENCIA.value));
-            int periodo = Integer.parseInt(matr.get(Header.PERIODO.value));
+            int frequencia = Integer.parseInt(matr.get(Header.FREQUENCIA.value).isEmpty() ? "-1" : matr.get(Header.FREQUENCIA.value));
+            int periodo = Integer.parseInt(matr.get(Header.PERIODO.value).replace("o. Semestre", ""));
             Matricula.Situacao situacao;
             switch (matr.get(Header.COD_ATIV_CURRIC.value))
             {

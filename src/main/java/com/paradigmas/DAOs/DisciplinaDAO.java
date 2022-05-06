@@ -62,7 +62,7 @@ public class DisciplinaDAO {
         return new ArrayList<>();
     }
     
-    private Disciplina getDisciplinaPorCodigo(String cod) throws IOException
+    private static Disciplina getDisciplinaPorCodigo(String cod) throws IOException
     {
     	List<Disciplina> disciplina = DisciplinaDAO.getDisciplinas();
     	
@@ -75,7 +75,7 @@ public class DisciplinaDAO {
     	return null;
     }
     
-    public List<Disciplina> getDisciplinasAntesBarreira() throws IOException
+    public static List<Disciplina> getDisciplinasAntesBarreira() throws IOException
     {
     	List<Disciplina> disciplina = DisciplinaDAO.getDisciplinas();
     	
@@ -90,7 +90,7 @@ public class DisciplinaDAO {
     	return disc_ant_barr;
     }
     
-    public List<Disciplina> getDisciplinasFaltantes(Aluno aluno) throws IOException
+    public static List<Disciplina> getDisciplinasFaltantes(Aluno aluno) throws IOException
     {
     	
     	List<Disciplina> disc_cursadas = new ArrayList<Disciplina>();
@@ -98,7 +98,7 @@ public class DisciplinaDAO {
     	
     	for (Matricula mat : aluno.getMatricula())
     	{
-    		disc = this.getDisciplinaPorCodigo(mat.getCod_disciplina());
+    		disc = DisciplinaDAO.getDisciplinaPorCodigo(mat.getCod_disciplina());
     		if(disc != null)
     			disc_cursadas.add(disc);
     	}

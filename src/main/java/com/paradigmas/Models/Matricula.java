@@ -61,4 +61,8 @@ public class Matricula {
     {
         return Integer.parseInt(this.frequencia.getValue().split("%")[0]);
     }
+
+	public Situacao getSituacao() {
+		return this.situacao;
+	}
 }

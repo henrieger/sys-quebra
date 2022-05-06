@@ -95,6 +95,26 @@ public class HistoricoDAO
         }
         return matriculas;
     }
+    
+    public static int ultimoPeriodo() throws Exception
+    {
+    	Aluno historico_aluno = HistoricoDAO.ler_historico();
+        List<Matricula> historico = historico_aluno.getMatricula();
+        int ultimo = 0;
+        
+        for(Matricula disciplinas: historico)
+        {
+        	int periodo = disciplinas.getPeriodo();
+            if(ultimo > periodo)
+            {
+            	ultimo = periodo;
+            }
+       }
+       
+        return ultimo;
+        
+    }
+    
 
 }
 

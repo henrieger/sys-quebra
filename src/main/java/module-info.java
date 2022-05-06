@@ -3,6 +3,7 @@ module com.paradigmas {
     requires javafx.fxml;
 	requires javafx.graphics;
 	requires javafx.base;
+	requires com.google.gson;
 
     opens com.paradigmas to javafx.fxml;
     exports com.paradigmas;

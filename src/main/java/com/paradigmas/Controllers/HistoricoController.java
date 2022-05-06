@@ -16,4 +16,10 @@ public class HistoricoController {
 		return HistoricoDAO.importar_historico(path);
 		
 	}
+	
+	
+	public static List<Disciplina> gerarHistorico() throws IOException
+	{
+		return DisciplinaDAO.getDisciplinas();
+	}
 }

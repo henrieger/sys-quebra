@@ -35,4 +35,16 @@ public class Matricula {
 	public String getCod_disciplina() {
 		return this.cod_disciplina;
 	}
+
+
+
+	public Situacao getSituacao() {
+		return this.situacao;
+	}
+
+
+
+	public int getPeriodo() {
+		return this.periodo;
+	}
 }

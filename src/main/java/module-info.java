@@ -8,5 +8,8 @@ module com.paradigmas {
     opens com.paradigmas to javafx.fxml;
     exports com.paradigmas;
 
+    opens com.paradigmas.Controllers to javafx.fxml;
+    exports com.paradigmas.Controllers;
+
     opens com.paradigmas.Models;
 }

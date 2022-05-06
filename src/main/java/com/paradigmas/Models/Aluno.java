@@ -18,4 +18,6 @@ public class Aluno {
         this.nome = nome;
         this.matricula = matricula;
     }
+
+    public String getNome() { return nome; }
 }

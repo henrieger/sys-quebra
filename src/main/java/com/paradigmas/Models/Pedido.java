@@ -3,17 +3,17 @@ package com.paradigmas.Models;
 import java.util.Arrays;
 
 public class Pedido {
-    private String  disciplina;
+    private String []  disciplina;
     private String nome;
     private String grr;
-    private long telefone;
+    private int telefone;
     private Boolean is_formando;
     private int total_disc_obrigatoria;
     private int total_disc_optativas;
     public String justificativa;
     
     
-    public Pedido(String disciplina, String nome,  String grr, Long telefone,  Boolean is_formando,  int total_disc_obrigatoria, int total_disc_optativas, String justificativa)
+    public Pedido(String [] disciplina, String nome,  String grr, int telefone,  Boolean is_formando,  int total_disc_obrigatoria, int total_disc_optativas, String justificativa)
     {
     	this.disciplina = disciplina;
     	this.nome = nome;
@@ -27,10 +27,9 @@ public class Pedido {
     
 
 
-	public String getDisciplina()
+	public String[] getDisciplina()
     {
     	return this.disciplina;
-    	//   Arrays.copyOf(disciplina, disciplina.length);
     	
     }
     
@@ -69,7 +68,7 @@ public class Pedido {
     	return this.justificativa;
     }
     
-    public void setDisciplina(String  disciplina)
+    public void setDisciplina(String[]  disciplina)
     {
     	this.disciplina = disciplina;
     }

@@ -76,7 +76,7 @@ public class HistoricoDAO
             int frequencia = Integer.parseInt(matr.get(Header.FREQUENCIA.value).isEmpty() ? "-1" : matr.get(Header.FREQUENCIA.value));
             int periodo = Integer.parseInt(matr.get(Header.PERIODO.value).replace("o. Semestre", ""));
             Matricula.Situacao situacao;
-            switch (matr.get(Header.COD_ATIV_CURRIC.value))
+            switch (matr.get(Header.SITUACAO.value))
             {
                 case "Aprovado":
                     situacao = Matricula.Situacao.APROVADO;
@@ -88,7 +88,7 @@ public class HistoricoDAO
                     situacao = Matricula.Situacao.REPROVADO_FREQUENCIA;
                     break;
                 default:
-                    situacao = null;
+                    situacao = Matricula.Situacao.REPROVADO;
             }
 
             matriculas.add((new Matricula(grr, cod_disciplina, media, ano, situacao, frequencia, periodo)));

@@ -42,7 +42,7 @@ public class Matricula {
     }
 
 	public String getCod_disciplina() {
-		return this.cod_disciplina.toString();
+		return this.cod_disciplina.getValue();
 	}
 
     public SimpleStringProperty cod_disciplinaProperty() {

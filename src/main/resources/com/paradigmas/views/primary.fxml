@@ -9,14 +9,23 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 
-<VBox prefHeight="446.0" prefWidth="590.0" spacing="20.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.paradigmas.PrimaryController">
+<VBox alignment="CENTER" prefHeight="446.0" prefWidth="590.0" scaleShape="false" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.paradigmas.Controllers.PrimaryController">
    <children>
-      <Pane prefHeight="401.0" prefWidth="564.0">
+      <GridPane alignment="CENTER" hgap="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="140.0" prefWidth="550.0" vgap="30.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <Button fx:id="primaryButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="68.0" layoutY="127.0" onAction="#switchToSecondary" prefHeight="135.0" prefWidth="154.0" style="-fx-background-color: #333333; -fx-border-color: white; -fx-border-radius: 5px;" text="Importar" textFill="WHITE" />
-            <Button fx:id="primaryButton1" layoutX="310.0" layoutY="127.0" onAction="#switchToSecondary" prefHeight="135.0" prefWidth="154.0" style="-fx-background-color: #333333; -fx-border-color: white; -fx-border-radius: 5px;" text="Carregar" textFill="WHITE" />
+            <Button fx:id="primaryButton" alignment="CENTER" contentDisplay="RIGHT" onAction="#switchToSecondary" text="Importar" textFill="WHITE" GridPane.rowIndex="1" />
+            <Button fx:id="primaryButton1" onAction="#switchToSecondary" text="Carregar" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Sistema de Quebra de Barreira" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" />
          </children>
-      </Pane>
+      </GridPane>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

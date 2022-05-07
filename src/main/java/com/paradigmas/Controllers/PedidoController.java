@@ -8,11 +8,14 @@ import com.paradigmas.DAOs.HistoricoDAO;
 import com.paradigmas.DAOs.PedidoDAO;
 import com.paradigmas.Models.Aluno;
 import com.paradigmas.Models.Pedido;
+
+import javafx.collections.ObservableList;
+
 import java.util.List;
 public class PedidoController {
 	
 	
-	public static Pedido gera_pedido(List<String> disciplina) throws Exception
+	public static Pedido gera_pedido(ObservableList<String> disciplina) throws Exception
 	{
 		Aluno aluno = HistoricoDAO.ler_historico();
 		Pedido pedido = new Pedido(disciplina, aluno.getNome(), aluno.getGrr());

@@ -16,14 +16,9 @@ import java.util.List;
 public class PedidoController {
 	
 	
-	public static Pedido gera_pedido(ObservableList<Disciplina> disciplina) throws Exception
+	public static void gera_pedido(Pedido pedido) throws Exception
 	{
-		Aluno aluno = HistoricoDAO.ler_historico();
-		Pedido pedido = new Pedido(disciplina, aluno.getNome(), aluno.getGrr());
-		
 		PedidoDAO.gera_pedido(pedido);
-		
-		return pedido;
 	}
 	
 	public static boolean salva_pedido(Pedido pedido) throws JsonSyntaxException, IOException
@@ -40,5 +35,13 @@ public class PedidoController {
 		return PedidoDAO.ler_pedido();
 	}
 	
+	public static Pedido cria_pedido(ObservableList<Disciplina> disciplina) throws Exception
+    {
+        Aluno aluno = HistoricoDAO.ler_historico();
+        Pedido pedido = new Pedido(disciplina, aluno.getNome(), aluno.getGrr());
+
+        return pedido;
+    }
+
 	
 }

@@ -46,9 +46,9 @@
                      <children>
                         <GridPane alignment="CENTER" hgap="30.0" maxHeight="400.0" maxWidth="600.0" minHeight="370.0" minWidth="600.0" prefHeight="367.0" prefWidth="984.0" vgap="15.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
                            <children>
-                              <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Gerar Pedido" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                              <Button contentDisplay="CENTER" layoutX="196.0" layoutY="250.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Salvar Pedido" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                              <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                              <Button fx:id="gerarPedido" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Gerar Pedido" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" onAction="#gerarPedido" />
+                              <Button fx:id="salvarPedido" contentDisplay="CENTER" layoutX="196.0" layoutY="250.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Salvar Pedido" GridPane.halignment="CENTER" GridPane.rowIndex="2" onAction="#salvarPedido" />
+                              <TableView fx:id="tabelaPedido" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                 <columns>
                                   <TableColumn prefWidth="238.0" text="Cod. Disciplina" />
                                   <TableColumn prefWidth="704.0" text="Nome Disciplina" />

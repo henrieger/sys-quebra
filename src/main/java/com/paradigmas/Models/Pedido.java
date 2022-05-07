@@ -8,7 +8,7 @@ public class Pedido {
     private String nome;
     private String grr;
     
-    
+    public Pedido() {}
     public Pedido(List<Disciplina> disciplina, String nome,  String grr)
     {
     	this.disciplina = disciplina;

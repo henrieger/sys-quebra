@@ -1,9 +1,11 @@
 package com.paradigmas.DAOs;
 
-import java.io.BufferedWriter;
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -29,28 +31,24 @@ public static Pedido ler_pedido() throws IOException
 	    String caminho = "./src/main/resources/data/pedido.json";
 	    Gson gson = new Gson();
 	    gson.toJson(pedido, new FileWriter(caminho));
-	           
 	}
 	
 	
 	public static void gera_pedido(Pedido pedido) throws IOException
-	{
-		try
-        {
-        File file=new File("./src/main/resources/data/Pedido.txt");
-        FileWriter fw=new FileWriter(file.getAbsoluteFile());
-        BufferedWriter bw=new BufferedWriter(fw);
-        bw.write(pedido.toString());
-        bw.close();
+    {
+        try {
+            FileWriter fw= new FileWriter("./src/main/resources/data/pedido.txt");
+
+
+            fw.write("Nome: "+ pedido.getNome());
+            fw.write("GRR: "+ pedido.getGrr());
+            fw.write("Disciplinas: "+ pedido.getDisciplina());
+
+            fw.close();
         }
-        catch (Exception e)
-        {
-            e.printStackTrace();
+        catch (Exception e) {
+            e.getStackTrace();
         }
-	           
-	}
-	
-	
-	
-	
+
+    }
 }

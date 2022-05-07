@@ -10,7 +10,8 @@ import com.paradigmas.Models.Pedido;
 public class PedidoController {
 	
 	
-	public Pedido gera_pedido(String [] disciplina, String nome, String grr, String tel,String formando,String obrigatoria, String optativa, String justificativa)
+	@SuppressWarnings("exports")
+	public static Pedido gera_pedido(String [] disciplina, String nome, String grr, String tel,String formando,String obrigatoria, String optativa, String justificativa)
 	{
 		int telefone = Integer.parseInt(tel);
 		boolean is_formando = Boolean.parseBoolean(formando);
@@ -24,12 +25,9 @@ public class PedidoController {
 	
 	public static boolean salva_pedido(String [] disciplina, String nome, String grr, String tel,String formando,String obrigatoria, String optativa, String justificativa) throws JsonSyntaxException, IOException
 	{
-		int telefone = Integer.parseInt(tel);
-		boolean is_formando = Boolean.parseBoolean(formando);
-		int total_disc_obrigatoria = Integer.parseInt(obrigatoria);
-		int total_disc_optativas = Integer.parseInt(optativa);
 		
-		Pedido pedido = new Pedido(disciplina, nome, grr, telefone, is_formando, total_disc_obrigatoria, total_disc_optativas, justificativa);
+		
+		Pedido pedido = gera_pedido(disciplina, nome, grr, tel, formando, obrigatoria, optativa, justificativa);
 		
 		PedidoDAO.salva_pedido(pedido);
 		
@@ -37,6 +35,7 @@ public class PedidoController {
 	}
 	
 	
+	@SuppressWarnings("exports")
 	public static Pedido ler_pedido() throws IOException
 	{
 		return PedidoDAO.ler_pedido();

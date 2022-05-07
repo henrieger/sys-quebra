@@ -24,6 +24,7 @@ public class HistoricoDAO
         PERIODO(8),
         SITUACAO(9),
         COD_ATIV_CURRIC(10),
+        CH_TOTAL(12),
         FREQUENCIA(14);
 
         public final int value;
@@ -72,9 +73,11 @@ public class HistoricoDAO
             String grr = matr.get(Header.MATR_ALUNO.value);
             String cod_disciplina = matr.get(Header.COD_ATIV_CURRIC.value);
             Double media = Double.parseDouble(matr.get(Header.MEDIA_FINAL.value));
+            int ch_total = Integer.parseInt(matr.get(Header.CH_TOTAL.value));
             int ano = Integer.parseInt(matr.get(Header.ANO.value));
             int frequencia = Integer.parseInt(matr.get(Header.FREQUENCIA.value).isEmpty() ? "-1" : matr.get(Header.FREQUENCIA.value));
             int periodo = Integer.parseInt(matr.get(Header.PERIODO.value).replace("o. Semestre", ""));
+            
             Matricula.Situacao situacao;
             switch (matr.get(Header.SITUACAO.value))
             {
@@ -87,34 +90,19 @@ public class HistoricoDAO
                 case "Reprovado por Frequência":
                     situacao = Matricula.Situacao.REPROVADO_FREQUENCIA;
                     break;
+                case "Reprovado":
+                	situacao = Matricula.Situacao.REPROVADO;
+                	break;
                 default:
-                    situacao = Matricula.Situacao.REPROVADO;
+                    situacao = Matricula.Situacao.MATRICULA;
             }
 
-            matriculas.add((new Matricula(grr, cod_disciplina, media, ano, situacao, frequencia, periodo)));
+            matriculas.add((new Matricula(grr, cod_disciplina, media, ano, situacao, frequencia, periodo, ch_total)));
         }
         return matriculas;
     }
     
-    public static int ultimoPeriodo() throws Exception
-    {
-    	Aluno historico_aluno = HistoricoDAO.ler_historico();
-        List<Matricula> historico = historico_aluno.getMatricula();
-        int ultimo = 0;
-        
-        for(Matricula disciplinas: historico)
-        {
-        	int periodo = disciplinas.getPeriodo();
-            if(ultimo > periodo)
-            {
-            	ultimo = periodo;
-            }
-       }
-       
-        return ultimo;
-        
-    }
-    
+ 
 
 }
 

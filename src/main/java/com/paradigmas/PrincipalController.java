@@ -13,10 +13,21 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 
 public class PrincipalController implements Initializable{
 
+	private void alert(String message, boolean erro)
+	{
+		AlertType at = (erro) ? AlertType.ERROR : AlertType.CONFIRMATION;
+		Alert alert = new Alert(at);
+		alert.setTitle((erro) ? "Erro": "Sucesso");
+		alert.setHeaderText(message);
+		alert.showAndWait();
+	}
+	
 	@FXML
 	private ListView<Disciplina> list_ant_barreira;
 	
@@ -29,6 +40,7 @@ public class PrincipalController implements Initializable{
 	
 	List<Disciplina> disc_barreira = null;
 	List<Disciplina> disc_faltantes = null;
+	Aluno aluno = null;
 	
 	public PrincipalController() throws IOException
 	{
@@ -37,28 +49,21 @@ public class PrincipalController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		DisciplinaController dc = new DisciplinaController();
 		disc_barreira = null;
 		disc_faltantes = null;
 		
 		try
-		{
-			Aluno aluno = HistoricoDAO.ler_historico();
+		{	
+			aluno = HistoricoDAO.ler_historico();
+			disc_faltantes = dc.getDisciplinasFaltantes(aluno);
 			
-			disc_faltantes = DisciplinaDAO.getDisciplinas();
-			
-			disc_barreira = DisciplinaDAO.getDisciplinasAntesBarreira();
-			disc_faltantes.removeAll(disc_barreira);
-			
-			for (Matricula m : aluno.getMatricula())
-			{
-				disc_barreira.removeIf(obj -> obj.getCod_disciplina().equals(m.getCod_disciplina()));
-				disc_faltantes.removeIf(obj -> obj.getCod_disciplina().equals(m.getCod_disciplina()));
-			}
+			disc_barreira = dc.getDisciplinasAntesBarreira(aluno);
 	
 		} catch (Exception e)
 		{
-			System.out.println(e.toString());
+			System.out.println(e.getMessage());
+			return;
 		}
 		
 		list_ant_barreira.getItems().addAll(disc_barreira);
@@ -68,8 +73,15 @@ public class PrincipalController implements Initializable{
 			Disciplina item = list_ant_barreira.getSelectionModel().getSelectedItem();
 			if(item != null)
 			{
-				list_ant_barreira.getItems().remove(list_ant_barreira.getSelectionModel().getSelectedIndex());
-				list_materias.getItems().add(item);
+				try
+				{
+					dc.verificarDisciplina(aluno, item, list_materias.getItems());
+					list_ant_barreira.getItems().remove(list_ant_barreira.getSelectionModel().getSelectedIndex());
+					list_materias.getItems().add(item);
+				} catch(Exception e2)
+				{
+					this.alert(e2.getMessage(), true);
+				}
 			}
         });
 		
@@ -77,8 +89,15 @@ public class PrincipalController implements Initializable{
 			Disciplina item = list_disc_faltantes.getSelectionModel().getSelectedItem();
 			if(item != null)
 			{
-				list_disc_faltantes.getItems().remove(list_disc_faltantes.getSelectionModel().getSelectedIndex());
-				list_materias.getItems().add(item);
+				try
+				{
+					dc.verificarDisciplina(aluno, item, list_materias.getItems());
+					list_disc_faltantes.getItems().remove(list_disc_faltantes.getSelectionModel().getSelectedIndex());
+					list_materias.getItems().add(item);
+				}catch(Exception e1)
+				{
+					this.alert(e1.getMessage(), true);
+				}
 			}
         });
 		

@@ -36,8 +36,8 @@ public class PerfilController implements Initializable {
 
             perfilMaterias.setText("Matérias cursadas no último período: " + getAprovadasUltimoSemestre());
             perfilAprovacao.setText("Aprovação no último período: " + getAprovacaoUltimoSemestre() + "%");
-            perfilReprovacaoNota.setText("Reprovações por nota no último período: " + getAprovacaoUltimoSemestre() + "%");
-            perfilReprovacaoFalta.setText("Reprovações por falta no último período: " + getAprovacaoUltimoSemestre() + "%");
+            perfilReprovacaoNota.setText("Reprovações por nota no último período: " + getReprovamentoNota() + "%");
+            perfilReprovacaoFalta.setText("Reprovações por falta no último período: " + getReprovamentoFrequencia() + "%");
         }
         catch (Exception e)
         {
@@ -46,24 +46,26 @@ public class PerfilController implements Initializable {
         }
     }
 
-    public int getReprovamentoNota() throws Exception
+    public Double getReprovamentoNota() throws Exception
     {
-        int reprovadas = DisciplinaDAO.contaDisciplinasReprovadas();
+        int aprovadas = DisciplinaDAO.contaCursadasUltimoSemestre();
         int reprovadas_nota =  DisciplinaDAO.contaDisciplinasReprovadasNota();
-        int result = reprovadas_nota % reprovadas;
+        System.out.println("reprovadas"+ aprovadas);
+        System.out.println("reprovadas_nota"+ reprovadas_nota);
+        double total = ((double)reprovadas_nota/(double)aprovadas) * 100;
 
 
-        return result ;
+        return total ;
     }
 
-    public int getReprovamentoFrequencia() throws Exception
+    public Double getReprovamentoFrequencia() throws Exception
     {
         int reprovadas = DisciplinaDAO.contaDisciplinasReprovadasFrequencia();
-        int reprovadas_nota =  DisciplinaDAO.contaDisciplinasReprovadasNota();
-        int result = reprovadas_nota % reprovadas;
+        int aprovadas = DisciplinaDAO.contaCursadasUltimoSemestre();
+        double total = ((double)reprovadas/(double)aprovadas) * 100;
 
 
-        return result ;
+        return total ;
     }
 
 
@@ -74,13 +76,17 @@ public class PerfilController implements Initializable {
         return aprovadas ;
     }
 
-    public int getAprovacaoUltimoSemestre() throws Exception
+    public Double getAprovacaoUltimoSemestre() throws Exception
     {
         int aprovadas = DisciplinaDAO.contaDisciplinasAprovadasUltimoSemestre();
         int cursadas = DisciplinaDAO.contaDisciplinasUltimoSemestre();
-        int result = aprovadas % cursadas;
-
-
-        return result ;
+        
+        
+        
+        
+        double total = ((double)aprovadas/(double)cursadas) * 100;
+        
+        
+        return total;
     }
 }

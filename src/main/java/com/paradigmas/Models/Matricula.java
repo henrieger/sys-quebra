@@ -9,7 +9,8 @@ public class Matricula {
         APROVADO,
         REPROVADO,
         REPROVADO_NOTA,
-        REPROVADO_FREQUENCIA
+        REPROVADO_FREQUENCIA,
+        MATRICULA
     };
 
     private String grr;
@@ -19,10 +20,11 @@ public class Matricula {
     private Situacao situacao;
     private SimpleStringProperty frequencia;
     private int periodo;
+    private int ch_total;
     
     
 
-    public Matricula(String grr, String cod_disciplina, Double media_final, int ano, Situacao situacao, int frequencia, int periodo)
+    public Matricula(String grr, String cod_disciplina, Double media_final, int ano, Situacao situacao, int frequencia, int periodo, int ch_total)
     {
         this.grr = grr;
         this.cod_disciplina = new SimpleStringProperty(cod_disciplina);
@@ -31,15 +33,21 @@ public class Matricula {
         this.situacao = situacao;
         this.frequencia = new SimpleStringProperty(frequencia+"%");
         this.periodo = periodo;
+        this.ch_total = ch_total;
     }
 
     public int getAno() {
         return this.ano;
     }
+    
+    public String getGrr() {
+        return this.grr;
+    }
 
     public int getPeriodo() {
         return this.periodo;
     }
+    
 
 	public String getCod_disciplina() {
 		return this.cod_disciplina.getValue();
@@ -64,5 +72,9 @@ public class Matricula {
 
 	public Situacao getSituacao() {
 		return this.situacao;
+	}
+
+	public int getCh_total() {
+		return ch_total;
 	}
 }

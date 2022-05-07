@@ -4,6 +4,7 @@ import java.util.List;
 
 import javafx.scene.control.ListView;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 
 import com.paradigmas.DAOs.HistoricoDAO;
@@ -28,6 +29,7 @@ public class DisciplinaViewController {
 
 	public void initialize() {
 		DisciplinaController dc = new DisciplinaController();
+		PedidoController pc = new PedidoController();
 		disc_barreira = null;
 		disc_faltantes = null;
 		
@@ -90,8 +92,7 @@ public class DisciplinaViewController {
 				else
 					list_disc_faltantes.getItems().add(item);
 			}
-        });
-		
+        });		
 	}
 
 	private void alert(String message, boolean erro)
@@ -101,5 +102,10 @@ public class DisciplinaViewController {
 		alert.setTitle((erro) ? "Erro": "Sucesso");
 		alert.setHeaderText(message);
 		alert.showAndWait();
+	}
+
+	public ListView<Disciplina> getList_materias()
+	{
+		return list_materias;
 	}
 }

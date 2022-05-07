@@ -8,7 +8,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.paradigmas.Controllers.PrincipalController">
    <children>
-      <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="NEVER">
+      <TabPane fx:id="tPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="NEVER">
         <tabs>
           <Tab text="Disciplinas">
             <content>
@@ -33,14 +33,14 @@
                               <ListView fx:id="list_disc_faltantes" prefHeight="96.0" prefWidth="195.0" GridPane.rowIndex="3" />
                               <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Outras Disciplinas" textAlignment="CENTER" GridPane.rowIndex="2" />
                               <ListView fx:id="list_materias" prefHeight="290.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="3" />
-                              <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Prosseguir" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                              <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#prosseguirParaPedido" prefHeight="25.0" prefWidth="172.0" text="Prosseguir" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
                            </children>
                         </GridPane>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Pedidos">
+            <Tab fx:id="tabPedidos" text="Pedidos">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

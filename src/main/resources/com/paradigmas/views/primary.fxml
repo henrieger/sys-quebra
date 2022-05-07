@@ -21,8 +21,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="primaryButton" alignment="CENTER" contentDisplay="RIGHT" onAction="#switchToSecondary" text="Importar" textFill="WHITE" GridPane.rowIndex="1" />
-            <Button fx:id="primaryButton1" onAction="#switchToSecondary" text="Carregar" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="primaryButton" alignment="CENTER" contentDisplay="RIGHT" onAction="#switchToSecondary" text="Importar" GridPane.rowIndex="1" />
+            <Button fx:id="primaryButton1" onAction="#switchToSecondary" text="Carregar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Sistema de Quebra de Barreira" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" />
          </children>
       </GridPane>

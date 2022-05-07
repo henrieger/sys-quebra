@@ -110,15 +110,60 @@ public class DisciplinaDAO {
     	return disc_total;
     }
     
+    public static int ultimoAno() throws Exception
+    {	
+    	Aluno historico_aluno = HistoricoDAO.ler_historico();
+        List<Matricula> historico = historico_aluno.getMatricula();
+        int ano = 0;
+        
+        for(Matricula disciplinas: historico)
+        {
+        	int ultimo_ano = disciplinas.getAno();
+        	if(ano < ultimo_ano && (disciplinas.getSituacao().equals(Matricula.Situacao.REPROVADO_NOTA) || disciplinas.getSituacao().equals(Matricula.Situacao.REPROVADO_FREQUENCIA) || disciplinas.getSituacao().equals(Matricula.Situacao.APROVADO)))
+        	{
+        		ano = ultimo_ano;
+        		
+        	}
+        	
+       }
+     
+        return ano;
+        
+    }
+    
+    public static int ultimoPeriodo() throws Exception
+    {
+    	Aluno historico_aluno = HistoricoDAO.ler_historico();
+        List<Matricula> historico = historico_aluno.getMatricula();
+        int ultimo = 0;
+        int ano = ultimoAno();
+        
+        for(Matricula disciplinas: historico)
+        {
+        	int ultimo_ano = disciplinas.getAno();
+        	int periodo = disciplinas.getPeriodo();
+        	
+            if(ultimo <= periodo && ano == ultimo_ano && (disciplinas.getSituacao().equals(Matricula.Situacao.REPROVADO_NOTA) || disciplinas.getSituacao().equals(Matricula.Situacao.REPROVADO_FREQUENCIA) || disciplinas.getSituacao().equals(Matricula.Situacao.APROVADO)))
+            {
+            	ultimo = periodo;
+            }
+       }       
+        
+        return ultimo;
+        
+    }
+    
     
     public static int contaDisciplinasReprovadas() throws Exception{ 
         Aluno historico_aluno = HistoricoDAO.ler_historico();
         List<Matricula> historico = historico_aluno.getMatricula();
         int Reprovadas = 0;
-        
+        int periodo = DisciplinaDAO.ultimoPeriodo();
+    	int ano = DisciplinaDAO.ultimoAno();
         for(Matricula disciplinas: historico){
         	
-             if(disciplinas.getSituacao().equals(Matricula.Situacao.REPROVADO)){
+             if(disciplinas.getSituacao().equals(Matricula.Situacao.REPROVADO) && disciplinas.getPeriodo() == periodo && disciplinas.getAno() == ano)
+			{
             	 Reprovadas++;
             }
         }
@@ -129,9 +174,11 @@ public class DisciplinaDAO {
         Aluno historico_aluno = HistoricoDAO.ler_historico();
         List<Matricula> historico = historico_aluno.getMatricula();
         int reprovadasNota = 0;
-        
+        int periodo = DisciplinaDAO.ultimoPeriodo();
+    	int ano = DisciplinaDAO.ultimoAno();
+    	
         for(Matricula disciplinas: historico){
-             if(disciplinas.getSituacao().equals(Matricula.Situacao.REPROVADO_NOTA)){
+             if(disciplinas.getSituacao().equals(Matricula.Situacao.REPROVADO_NOTA)  && disciplinas.getPeriodo() == periodo && disciplinas.getAno() == ano){
             	 reprovadasNota++;
             }
         }
@@ -142,9 +189,10 @@ public class DisciplinaDAO {
         Aluno historico_aluno = HistoricoDAO.ler_historico();
         List<Matricula> historico = historico_aluno.getMatricula();
         int reprovadasFrequencia = 0;
-        
+        int periodo = DisciplinaDAO.ultimoPeriodo();
+    	int ano = DisciplinaDAO.ultimoAno();
         for(Matricula disciplinas: historico){
-             if(disciplinas.getSituacao().equals(Matricula.Situacao.REPROVADO_FREQUENCIA)){
+             if(disciplinas.getSituacao().equals(Matricula.Situacao.REPROVADO_FREQUENCIA)  && disciplinas.getPeriodo() == periodo && disciplinas.getAno() == ano){
             	 reprovadasFrequencia++;
             }
         }
@@ -152,15 +200,15 @@ public class DisciplinaDAO {
     } 
     
     public static int contaCursadasUltimoSemestre() throws Exception{
-    	int ultimo = HistoricoDAO.ultimoPeriodo();
-    	
+    	int periodo = DisciplinaDAO.ultimoPeriodo();
+    	int ano = DisciplinaDAO.ultimoAno();
     	
         Aluno historico_aluno = HistoricoDAO.ler_historico();
         List<Matricula> historico = historico_aluno.getMatricula();
         int cursadas = 0;
         
         for(Matricula disciplinas: historico){
-             if(disciplinas.getPeriodo() == ultimo){
+             if(disciplinas.getPeriodo() == periodo && disciplinas.getAno() == ano  ){
             	 cursadas++;
             }
         }
@@ -168,15 +216,17 @@ public class DisciplinaDAO {
     } 
 
     public static int contaDisciplinasAprovadasUltimoSemestre() throws Exception{
-    	int ultimo = HistoricoDAO.ultimoPeriodo();
+
     	
         Aluno historico_aluno = HistoricoDAO.ler_historico();
         List<Matricula> historico = historico_aluno.getMatricula();
         int Aprovadas = 0;
+        int periodo = DisciplinaDAO.ultimoPeriodo();
+        int ano = DisciplinaDAO.ultimoAno();
         
         for(Matricula disciplinas: historico){
         	
-             if(disciplinas.getSituacao().equals(Matricula.Situacao.APROVADO) && disciplinas.getPeriodo() == ultimo){
+             if(disciplinas.getSituacao().equals(Matricula.Situacao.APROVADO) && disciplinas.getPeriodo() == periodo && disciplinas.getAno() == ano ){
             	 Aprovadas++;
             }
         }
@@ -184,19 +234,22 @@ public class DisciplinaDAO {
     }
     
     public static int contaDisciplinasUltimoSemestre() throws Exception{
-    	int ultimo = HistoricoDAO.ultimoPeriodo();
-    	
+    	int periodo = DisciplinaDAO.ultimoPeriodo();
+    	int ano = DisciplinaDAO.ultimoAno();
         Aluno historico_aluno = HistoricoDAO.ler_historico();
         List<Matricula> historico = historico_aluno.getMatricula();
         int cursadas = 0;
         
         for(Matricula disciplinas: historico){
         	
-             if(disciplinas.getPeriodo() == ultimo){
+             if(disciplinas.getPeriodo() == periodo && disciplinas.getAno() == ano){
             	 cursadas++;
             }
         }
         return cursadas;
     }
+    
+    
+   
     
 }

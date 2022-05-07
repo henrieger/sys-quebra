@@ -36,10 +36,15 @@ public class Matricula {
     public int getAno() {
         return this.ano;
     }
+    
+    public String getGrr() {
+        return this.grr;
+    }
 
     public int getPeriodo() {
         return this.periodo;
     }
+    
 
 	public String getCod_disciplina() {
 		return this.cod_disciplina.getValue();

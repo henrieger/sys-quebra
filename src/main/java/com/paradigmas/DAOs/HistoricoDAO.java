@@ -75,6 +75,7 @@ public class HistoricoDAO
             int ano = Integer.parseInt(matr.get(Header.ANO.value));
             int frequencia = Integer.parseInt(matr.get(Header.FREQUENCIA.value).isEmpty() ? "-1" : matr.get(Header.FREQUENCIA.value));
             int periodo = Integer.parseInt(matr.get(Header.PERIODO.value).replace("o. Semestre", ""));
+            
             Matricula.Situacao situacao;
             switch (matr.get(Header.SITUACAO.value))
             {
@@ -96,25 +97,7 @@ public class HistoricoDAO
         return matriculas;
     }
     
-    public static int ultimoPeriodo() throws Exception
-    {
-    	Aluno historico_aluno = HistoricoDAO.ler_historico();
-        List<Matricula> historico = historico_aluno.getMatricula();
-        int ultimo = 0;
-        
-        for(Matricula disciplinas: historico)
-        {
-        	int periodo = disciplinas.getPeriodo();
-            if(ultimo > periodo)
-            {
-            	ultimo = periodo;
-            }
-       }
-       
-        return ultimo;
-        
-    }
-    
+ 
 
 }
 

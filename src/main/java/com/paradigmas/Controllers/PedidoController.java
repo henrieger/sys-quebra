@@ -21,6 +21,8 @@ public class PedidoController {
 		Aluno aluno = HistoricoDAO.ler_historico();
 		Pedido pedido = new Pedido(disciplina, aluno.getNome(), aluno.getGrr());
 		
+		PedidoDAO.gera_pedido(pedido);
+		
 		return pedido;
 	}
 	

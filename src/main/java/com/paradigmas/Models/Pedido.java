@@ -1,21 +1,22 @@
 package com.paradigmas.Models;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Pedido {
-    private String []  disciplina;
+    private List<String> disciplina;
     private String nome;
     private String grr;
     
     
-    public Pedido(String [] disciplina, String nome,  String grr)
+    public Pedido(List<String> disciplina, String nome,  String grr)
     {
     	this.disciplina = disciplina;
     	this.nome = nome;
     	this.grr = grr;
     }
     
-	public String[] getDisciplina()
+	public List<String> getDisciplina()
     {
     	return this.disciplina;
     	
@@ -31,7 +32,7 @@ public class Pedido {
     	return this.grr;
     }
     
-    public void setDisciplina(String[]  disciplina)
+    public void setDisciplina(List<String>  disciplina)
     {
     	this.disciplina = disciplina;
     }

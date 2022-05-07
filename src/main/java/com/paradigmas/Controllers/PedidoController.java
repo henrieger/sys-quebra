@@ -8,12 +8,11 @@ import com.paradigmas.DAOs.HistoricoDAO;
 import com.paradigmas.DAOs.PedidoDAO;
 import com.paradigmas.Models.Aluno;
 import com.paradigmas.Models.Pedido;
-
+import java.util.List;
 public class PedidoController {
 	
 	
-	@SuppressWarnings("exports")
-	public static Pedido gera_pedido(String [] disciplina) throws Exception
+	public static Pedido gera_pedido(List<String> disciplina) throws Exception
 	{
 		Aluno aluno = HistoricoDAO.ler_historico();
 		Pedido pedido = new Pedido(disciplina, aluno.getNome(), aluno.getGrr());
@@ -30,7 +29,6 @@ public class PedidoController {
 	}
 	
 	
-	@SuppressWarnings("exports")
 	public static Pedido ler_pedido() throws IOException
 	{
 		return PedidoDAO.ler_pedido();

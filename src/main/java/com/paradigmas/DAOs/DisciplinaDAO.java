@@ -34,7 +34,7 @@ public class DisciplinaDAO {
     	if(DisciplinaDAO.disciplinas == null)
     		DisciplinaDAO.disciplinas = DisciplinaDAO.ler_disciplinas();
     	
-    	return DisciplinaDAO.disciplinas;
+    	return new ArrayList<>(DisciplinaDAO.disciplinas);
     }
 
     private static List<Disciplina> ler_disciplinas() throws IOException
@@ -50,8 +50,8 @@ public class DisciplinaDAO {
                 String nome = disp.get(Header.NOME_DISCIPLINA.value);
                 int periodo = Integer.parseInt(((disp.get(Header.PERIODO_IDEAL.value)).isEmpty()) ? "-1" : disp.get(Header.PERIODO_IDEAL.value));
                 int ch_total = Integer.parseInt(disp.get(Header.CH_TOTAL.value));
-                Disciplina.Tipo tipo = ((disp.get(Header.TIPO_DISCIPLINA.value)).equals("ATIVA")) ? Disciplina.Tipo.OBRIGATORIA : Disciplina.Tipo.OPTATIVA;
-                Disciplina.Situacao situacao = ((disp.get(Header.TIPO_DISCIPLINA.value)).equals("Obrigatoria")) ? Disciplina.Situacao.ATIVA : Disciplina.Situacao.DESATIVADA;
+                Disciplina.Tipo tipo = ((disp.get(Header.TIPO_DISCIPLINA.value)).equals("Obrigatoria")) ? Disciplina.Tipo.OBRIGATORIA : Disciplina.Tipo.OPTATIVA;
+                Disciplina.Situacao situacao = ((disp.get(Header.TIPO_DISCIPLINA.value)).equals("ATIVA")) ? Disciplina.Situacao.ATIVA : Disciplina.Situacao.DESATIVADA;
     
                 disciplina.add(new Disciplina(cod_disciplina, nome, periodo, ch_total, tipo, situacao));
             }

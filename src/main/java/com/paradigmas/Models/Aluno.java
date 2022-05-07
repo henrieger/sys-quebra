@@ -56,4 +56,8 @@ public class Aluno {
 	public double getIra() {
 		return ira;
 	}
+
+	public String getGrr() {
+		return this.grr;
+	}
 }

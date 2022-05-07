@@ -1,38 +1,29 @@
-package com.paradigmas;
+package com.paradigmas.Controllers;
 
-import java.net.URL;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import com.paradigmas.DAOs.HistoricoDAO;
 import com.paradigmas.Models.Aluno;
 import com.paradigmas.Models.Matricula;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
-public class HistoricoViewController implements Initializable{
+public class HistoricoViewController{
     
-    @FXML
     private Pane painelHistorico;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources)
+    public HistoricoViewController() {}
+    public HistoricoViewController(Pane painelHistorico) {
+        this.painelHistorico = painelHistorico; 
+    }
+
+    public void initialize()
     {
-        // System.out.println("Oi");
-        // System.out.println(painelHistorico.getId());
         try{
             Aluno aluno = HistoricoDAO.ler_historico();
             List<TableWithTitle> tabelas = createTables(aluno);

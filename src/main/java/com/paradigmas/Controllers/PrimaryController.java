@@ -1,18 +1,14 @@
-package com.paradigmas;
+package com.paradigmas.Controllers;
+
+import com.paradigmas.App;
 
 import java.io.File;
 
 import java.io.IOException;
-import java.util.List;
-
-import com.paradigmas.Controllers.HistoricoController;
-import com.paradigmas.DAOs.DisciplinaDAO;
-import com.paradigmas.Models.Disciplina;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
 
 public class PrimaryController {

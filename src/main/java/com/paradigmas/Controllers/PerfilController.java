@@ -5,41 +5,34 @@ import com.paradigmas.DAOs.HistoricoDAO;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.net.URL;
 
-import java.util.ResourceBundle;
-
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class PerfilController implements Initializable {
+public class PerfilController {
+    private Label nome;
+    private Label materias;
+    private Label aprovacao;
+    private Label reprovacaoNota;
+    private Label reprovacaoFalta;
 
-    @FXML
-    private Label perfilNome;
-
-    @FXML
-    private Label perfilMaterias;
-
-    @FXML
-    private Label perfilAprovacao;
-
-    @FXML
-    private Label perfilReprovacaoNota;
-
-    @FXML
-    private Label perfilReprovacaoFalta;
+    public PerfilController() {}
+    public PerfilController(Label nome, Label materias, Label aprovacao, Label reprovacaoNota, Label reprovacaoFalta) {
+        this.nome = nome;
+        this.materias = materias;
+        this.aprovacao = aprovacao;
+        this.reprovacaoNota = reprovacaoNota;
+        this.reprovacaoFalta = reprovacaoFalta;
+    }
     
-    @Override
-    public void initialize(URL location, ResourceBundle resources)
+    public void initialize()
     {
         try {
-            perfilNome.setText(HistoricoDAO.ler_historico().getNome());
+            nome.setText(HistoricoDAO.ler_historico().getNome());
 
-            perfilMaterias.setText("Matérias cursadas no último período: " + getAprovadasUltimoSemestre());
-            perfilAprovacao.setText("Aprovação no último período: " + formatDouble(getAprovacaoUltimoSemestre()) + "%");
-            perfilReprovacaoNota.setText("Reprovações por nota no último período: " + formatDouble(getReprovamentoNota()) + "%");
-            perfilReprovacaoFalta.setText("Reprovações por falta no último período: " + formatDouble(getReprovamentoFrequencia()) + "%");
+            materias.setText("Matérias cursadas no último período: " + getAprovadasUltimoSemestre());
+            aprovacao.setText("Aprovação no último período: " + formatDouble(getAprovacaoUltimoSemestre()) + "%");
+            reprovacaoNota.setText("Reprovações por nota no último período: " + formatDouble(getReprovamentoNota()) + "%");
+            reprovacaoFalta.setText("Reprovações por falta no último período: " + formatDouble(getReprovamentoFrequencia()) + "%");
         }
         catch (Exception e)
         {

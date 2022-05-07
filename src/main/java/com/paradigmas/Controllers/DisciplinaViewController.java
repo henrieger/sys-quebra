@@ -1,54 +1,32 @@
-package com.paradigmas;
+package com.paradigmas.Controllers;
 
 import java.util.List;
-import com.paradigmas.Models.*;
-import com.paradigmas.Controllers.*;
-import com.paradigmas.DAOs.*;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class PrincipalController implements Initializable{
+import com.paradigmas.DAOs.HistoricoDAO;
+import com.paradigmas.Models.Aluno;
+import com.paradigmas.Models.Disciplina;
 
-	private void alert(String message, boolean erro)
-	{
-		AlertType at = (erro) ? AlertType.ERROR : AlertType.CONFIRMATION;
-		Alert alert = new Alert(at);
-		alert.setTitle((erro) ? "Erro": "Sucesso");
-		alert.setHeaderText(message);
-		alert.showAndWait();
-	}
-	
-	@FXML
+public class DisciplinaViewController {
 	private ListView<Disciplina> list_ant_barreira;
-	
-	@FXML
 	private ListView<Disciplina> list_disc_faltantes;
-	
-	@FXML
 	private ListView<Disciplina> list_materias;
 	
+	public DisciplinaViewController() {}
+	public DisciplinaViewController(ListView<Disciplina> list_ant_barreira, ListView<Disciplina> list_disc_faltantes, ListView<Disciplina> list_materias) {
+		this.list_ant_barreira = list_ant_barreira;
+		this.list_disc_faltantes = list_disc_faltantes;
+		this.list_materias = list_materias;
+	}
 	
 	List<Disciplina> disc_barreira = null;
 	List<Disciplina> disc_faltantes = null;
 	Aluno aluno = null;
-	
-	public PrincipalController() throws IOException
-	{
-		
-	}
-	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+
+	public void initialize() {
 		DisciplinaController dc = new DisciplinaController();
 		disc_barreira = null;
 		disc_faltantes = null;
@@ -66,6 +44,7 @@ public class PrincipalController implements Initializable{
 			return;
 		}
 		
+		System.out.println(list_ant_barreira);
 		list_ant_barreira.getItems().addAll(disc_barreira);
 		list_disc_faltantes.getItems().addAll(disc_faltantes);
 		
@@ -113,5 +92,14 @@ public class PrincipalController implements Initializable{
 			}
         });
 		
+	}
+
+	private void alert(String message, boolean erro)
+	{
+		AlertType at = (erro) ? AlertType.ERROR : AlertType.CONFIRMATION;
+		Alert alert = new Alert(at);
+		alert.setTitle((erro) ? "Erro": "Sucesso");
+		alert.setHeaderText(message);
+		alert.showAndWait();
 	}
 }

@@ -11,5 +11,6 @@ module com.paradigmas {
     opens com.paradigmas.Controllers to javafx.fxml;
     exports com.paradigmas.Controllers;
 
-    opens com.paradigmas.Models;
+    opens com.paradigmas.Models to javafx.fxml;
+    exports com.paradigmas.Models;
 }

@@ -4,19 +4,19 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Pedido {
-    private List<String> disciplina;
+    private List<Disciplina> disciplina;
     private String nome;
     private String grr;
     
     
-    public Pedido(List<String> disciplina, String nome,  String grr)
+    public Pedido(List<Disciplina> disciplina, String nome,  String grr)
     {
     	this.disciplina = disciplina;
     	this.nome = nome;
     	this.grr = grr;
     }
     
-	public List<String> getDisciplina()
+	public List<Disciplina> getDisciplina()
     {
     	return this.disciplina;
     	
@@ -32,7 +32,7 @@ public class Pedido {
     	return this.grr;
     }
     
-    public void setDisciplina(List<String>  disciplina)
+    public void setDisciplina(List<Disciplina>  disciplina)
     {
     	this.disciplina = disciplina;
     }

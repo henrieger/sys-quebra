@@ -66,20 +66,26 @@ public class PrincipalController implements Initializable {
 		ObservableList<Disciplina> disciplinas = disciplinaController.getList_materias().getItems();
 		Pedido pedido = PedidoController.cria_pedido(disciplinas);
 		pedidoViewController.updateTableData(pedido);
+		System.out.println(pedidoViewController.getPedidoAtual().getDisciplina());
 		SingleSelectionModel<Tab> selectionModel = tPane.getSelectionModel();
 		selectionModel.select(tabPedidos);
-		disciplinas.removeAll(disciplinas);
+		// disciplinas.removeAll(disciplinas);
 	}
 
 	@FXML
-	private void salvarPedido() throws IOException
+	private void salvarPedido() throws Exception
 	{
-		PedidoController.salva_pedido(pedidoViewController.getPedidoAtual());
+		ObservableList<Disciplina> disciplinas = disciplinaController.getList_materias().getItems();
+		Pedido pedido = PedidoController.cria_pedido(disciplinas);
+		System.out.println(pedido.getDisciplina());
+		PedidoController.salva_pedido(pedido);
 	}
 
 	@FXML
 	private void gerarPedido() throws Exception
 	{
-		PedidoController.gera_pedido(pedidoViewController.getPedidoAtual());
+		ObservableList<Disciplina> disciplinas = disciplinaController.getList_materias().getItems();
+		Pedido pedido = PedidoController.cria_pedido(disciplinas);
+		PedidoController.gera_pedido(pedido);
 	}
 }

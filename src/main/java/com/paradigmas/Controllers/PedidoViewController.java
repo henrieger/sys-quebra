@@ -12,7 +12,7 @@ import javafx.scene.control.TableColumn;
 public class PedidoViewController {
     private TableView<Disciplina> table;
 
-    private Pedido pedidoAtual;
+    static private Pedido pedidoAtual;
     
     public Pedido getPedidoAtual()
     {
@@ -21,7 +21,7 @@ public class PedidoViewController {
 
     public void setPedidoAtual(Pedido pedido)
     {
-        this.pedidoAtual = pedido;
+        pedidoAtual = pedido;
     }
 
     public PedidoViewController() {}

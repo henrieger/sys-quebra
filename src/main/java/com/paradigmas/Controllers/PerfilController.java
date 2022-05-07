@@ -3,6 +3,8 @@ package com.paradigmas.Controllers;
 import com.paradigmas.DAOs.DisciplinaDAO;
 import com.paradigmas.DAOs.HistoricoDAO;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 
 import java.util.ResourceBundle;
@@ -35,9 +37,9 @@ public class PerfilController implements Initializable {
             perfilNome.setText(HistoricoDAO.ler_historico().getNome());
 
             perfilMaterias.setText("Matérias cursadas no último período: " + getAprovadasUltimoSemestre());
-            perfilAprovacao.setText("Aprovação no último período: " + getAprovacaoUltimoSemestre() + "%");
-            perfilReprovacaoNota.setText("Reprovações por nota no último período: " + getReprovamentoNota() + "%");
-            perfilReprovacaoFalta.setText("Reprovações por falta no último período: " + getReprovamentoFrequencia() + "%");
+            perfilAprovacao.setText("Aprovação no último período: " + formatDouble(getAprovacaoUltimoSemestre()) + "%");
+            perfilReprovacaoNota.setText("Reprovações por nota no último período: " + formatDouble(getReprovamentoNota()) + "%");
+            perfilReprovacaoFalta.setText("Reprovações por falta no último período: " + formatDouble(getReprovamentoFrequencia()) + "%");
         }
         catch (Exception e)
         {
@@ -88,5 +90,10 @@ public class PerfilController implements Initializable {
         
         
         return total;
+    }
+
+    public String formatDouble(Double value)
+    {
+        return BigDecimal.valueOf(value).setScale(2, RoundingMode.HALF_EVEN).toString();
     }
 }

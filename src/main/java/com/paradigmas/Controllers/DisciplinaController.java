@@ -35,7 +35,6 @@ public class DisciplinaController {
 	public List<Disciplina> getDisciplinasAntesBarreira(Aluno aluno) throws IOException
 	{
 		List<Disciplina> disc_barreira = DisciplinaDAO.getDisciplinasAntesBarreira();
-		System.out.println(disc_barreira.size());
 		for (Matricula m : aluno.getMatricula())
 		{
 			disc_barreira.removeIf(obj -> obj.getCod_disciplina().equals(m.getCod_disciplina()));

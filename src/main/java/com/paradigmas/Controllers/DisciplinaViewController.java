@@ -4,7 +4,6 @@ import java.util.List;
 
 import javafx.scene.control.ListView;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 
 import com.paradigmas.DAOs.HistoricoDAO;
@@ -46,7 +45,6 @@ public class DisciplinaViewController {
 			return;
 		}
 		
-		System.out.println(list_ant_barreira);
 		list_ant_barreira.getItems().addAll(disc_barreira);
 		list_disc_faltantes.getItems().addAll(disc_faltantes);
 		

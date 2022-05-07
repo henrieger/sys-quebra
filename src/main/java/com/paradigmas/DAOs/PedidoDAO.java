@@ -1,11 +1,7 @@
 package com.paradigmas.DAOs;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
@@ -39,7 +35,7 @@ public static Pedido ler_pedido() throws IOException
 	}
 	
 	
-	public static void gera_pedido(Pedido pedido) throws IOException
+	public static String gera_pedido(Pedido pedido) throws IOException
     {
         try {
             FileWriter fw= new FileWriter("./src/main/resources/data/pedido.txt");
@@ -53,10 +49,13 @@ public static Pedido ler_pedido() throws IOException
 			}
 
             fw.close();
+			return "./src/main/resources/data/pedido.txt";
         }
         catch (Exception e) {
             e.getStackTrace();
         }
+
+		return "";
 
     }
 }

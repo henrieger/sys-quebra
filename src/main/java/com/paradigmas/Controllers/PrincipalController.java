@@ -1,20 +1,21 @@
 package com.paradigmas.Controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.paradigmas.App;
 import com.paradigmas.Models.Disciplina;
 import com.paradigmas.Models.Pedido;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.SingleSelectionModel;
@@ -66,7 +67,6 @@ public class PrincipalController implements Initializable {
 		ObservableList<Disciplina> disciplinas = disciplinaController.getList_materias().getItems();
 		Pedido pedido = PedidoController.cria_pedido(disciplinas);
 		pedidoViewController.updateTableData(pedido);
-		System.out.println(pedidoViewController.getPedidoAtual().getDisciplina());
 		SingleSelectionModel<Tab> selectionModel = tPane.getSelectionModel();
 		selectionModel.select(tabPedidos);
 		// disciplinas.removeAll(disciplinas);
@@ -77,8 +77,9 @@ public class PrincipalController implements Initializable {
 	{
 		ObservableList<Disciplina> disciplinas = disciplinaController.getList_materias().getItems();
 		Pedido pedido = PedidoController.cria_pedido(disciplinas);
-		System.out.println(pedido.getDisciplina());
 		PedidoController.salva_pedido(pedido);
+		App.setRoot("primary");
+		alert("Sessão salva com sucesso!", false);
 	}
 
 	@FXML
@@ -86,6 +87,17 @@ public class PrincipalController implements Initializable {
 	{
 		ObservableList<Disciplina> disciplinas = disciplinaController.getList_materias().getItems();
 		Pedido pedido = PedidoController.cria_pedido(disciplinas);
-		PedidoController.gera_pedido(pedido);
+		String caminho = PedidoController.gera_pedido(pedido);
+		App.setRoot("primary");
+		alert("Pedido gerado no arquivo " + caminho, false);
+	}
+
+	private void alert(String message, boolean erro)
+	{
+		AlertType at = (erro) ? AlertType.ERROR : AlertType.CONFIRMATION;
+		Alert alert = new Alert(at);
+		alert.setTitle((erro) ? "Erro": "Sucesso");
+		alert.setHeaderText(message);
+		alert.showAndWait();
 	}
 }

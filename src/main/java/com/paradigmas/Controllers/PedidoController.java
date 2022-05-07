@@ -12,13 +12,12 @@ import com.paradigmas.Models.Pedido;
 
 import javafx.collections.ObservableList;
 
-import java.util.List;
 public class PedidoController {
 	
 	
-	public static void gera_pedido(Pedido pedido) throws Exception
+	public static String gera_pedido(Pedido pedido) throws Exception
 	{
-		PedidoDAO.gera_pedido(pedido);
+		return PedidoDAO.gera_pedido(pedido);
 	}
 	
 	public static boolean salva_pedido(Pedido pedido) throws JsonSyntaxException, IOException

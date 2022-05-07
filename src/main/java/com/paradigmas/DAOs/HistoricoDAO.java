@@ -2,7 +2,6 @@ package com.paradigmas.DAOs;
 
 import com.paradigmas.Models.Matricula;
 import com.paradigmas.Models.Aluno;
-import com.paradigmas.Models.Disciplina;
 import com.paradigmas.Lib.CsvReader;
 import java.io.File;
 import java.nio.file.Files;
@@ -57,7 +56,6 @@ public class HistoricoDAO
         List<List<String>> records = CsvReader.ler_csv(historico_path, delimiter);
         
         String grr = (records.get(0)).get(Header.MATR_ALUNO.value);
-        System.out.println(records.size());
         String nome = (records.get(0)).get(Header.NOME_PESSOA.value);
 
         List<Matricula> matricula = HistoricoDAO.ler_matriculas(records);

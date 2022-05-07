@@ -9,16 +9,15 @@ Link para o esquema do trabalho [aqui](https://imageup.me/ga).
 
 Andrey o arquivo historico.csv que você disponibilizou está com os códigos das disciplinas errados o nosso historico.csv foi arrumado para os códigos certos.
 
-Grupo:
+O Historico.csv e o pedido.txt que é gerado estão no no caminho: sys-quebra\src\main\resources\data
 
-André Felipe de Almeida Pontes - GRR20196474
 
-Yan Oliveira da Costa - GRR20204095
+Como rodar o projeto:
 
-Eduardo Vinicius Schroeder - GRR20195695
+- Inicie o Eclipse na pasta do projeto;
 
-Henrique Luiz Rieger - GRR20190357
 
+- Rode o projeto com o botão F5 ou clique em 'Run' na interface gráfica.
 
 Caminho para os arquivos:
 
@@ -29,3 +28,14 @@ DAOs:  sys-quebra\src\main\java\com\paradigmas\DAOs.
 Models: sys-quebra\src\main\java\com\paradigmas\Models.
 
 Views sys-quebra\src\main\resources\com\paradigmas\views.
+
+
+Grupo:
+
+André Felipe de Almeida Pontes - GRR20196474
+
+Yan Oliveira da Costa - GRR20204095
+
+Eduardo Vinicius Schroeder - GRR20195695
+
+Henrique Luiz Rieger - GRR20190357

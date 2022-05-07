@@ -45,8 +45,6 @@ public class PerfilController {
     {
         int aprovadas = DisciplinaDAO.contaCursadasUltimoSemestre();
         int reprovadas_nota =  DisciplinaDAO.contaDisciplinasReprovadasNota();
-        System.out.println("reprovadas"+ aprovadas);
-        System.out.println("reprovadas_nota"+ reprovadas_nota);
         double total = ((double)reprovadas_nota/(double)aprovadas) * 100;
 
 

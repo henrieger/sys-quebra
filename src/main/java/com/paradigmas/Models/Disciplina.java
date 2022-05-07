@@ -49,4 +49,9 @@ public class Disciplina {
 		return this.getNome();
 	}
 
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
 }
